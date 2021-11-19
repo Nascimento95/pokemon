@@ -20,7 +20,8 @@ const Login = () => {
           password: ""
         },
         onSubmit: values => {
-          setIsLogged(true)
+          handleButtonClick()
+          // setIsLogged(true)
         },
         // utilisation de yup pour mettre des condition a nos formulaire 
         validationSchema: Yup.object().shape({
@@ -72,7 +73,7 @@ const Login = () => {
       />
             {formik.errors.password && <p>{formik.errors.password}</p>}
         <br />
-        {isLogged === false &&  <button type="submit"onClick={handleButtonClick} >Submit</button>}
+        {isLogged === false &&  <button type="submit" >Submit</button>}
         {isLogged && 
             <div>
                 <button className="btn btn-secondary" type="button" onClick={clickFalse}>Logout</button>
