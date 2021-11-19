@@ -9,7 +9,7 @@ const Button = () => {
     }
     return (
         <div>
-            <button onClick={clickRandom} type="button" class="btn btn-success">Change pokemon</button>
+            <button onClick={()=> clickRandom()} type="button" class="btn btn-success">Change pokemon</button>
         </div>
     );
   }

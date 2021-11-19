@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
+import { UserContext } from "../context/User"
+import { useContext } from 'react'
+import { Link } from "react-router-dom"
 
 const Home = () => {
+    const { isLogged} = useContext(UserContext)
+    console.log(isLogged);
+
     const [ pokemon , setPokemon] = useState(null)
     // ce useeffect correspond au componentsDidmount grace au array vide a la fin executer a la fin du return (render)
     useEffect(() => {
@@ -16,15 +22,18 @@ const Home = () => {
         fetch( `https://pokeapi.co/api/v2/pokemon/${result}`)
             .then(reponse => reponse.json())
             .then(result => setPokemon(result))
+            // console.log(this.props);
     }
 
     // console.log("state pokemon",pokemon);
     return (
         <>
             <p>Home</p>
-            {pokemon == null ? (
-                <></>
+            {pokemon === null || isLogged === false? (
+                
+                <Link to="/Login">vous devez vous connecter</Link>
             ) : (
+                
                <div className="card col-6 bg-secondary" >
                     <img className="card-img-top img-fluid" src={`${pokemon.sprites.other.dream_world.front_default} `} />
                     <div className="card-body">
