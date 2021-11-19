@@ -2,8 +2,7 @@ import { useFormik } from "formik"
 import * as Yup from 'yup'
 import { UserContext } from "../context/User"
 import { useContext } from 'react'
-import { useNavigate } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 
 
  
@@ -12,8 +11,8 @@ const Login = () => {
     //  on recup la valeur de islogged et le setState pour modifier le state 
     const {setIsLogged , isLogged} = useContext(UserContext)
     console.log(isLogged);
-    
-   let navigate = useNavigate( )
+    console.log(Link);
+    let navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -38,7 +37,7 @@ const Login = () => {
       const handleButtonClick = (event) => {
         if (isLogged === false) {
           setIsLogged(true)
-          navigate(<Link to="/"></Link>)
+          navigate("/")
         } else {
           setIsLogged(false)
         }
@@ -73,7 +72,7 @@ const Login = () => {
       />
             {formik.errors.password && <p>{formik.errors.password}</p>}
         <br />
-        {isLogged === false &&  <button type="submit" onClick={handleButtonClick}>Submit</button>}
+        {isLogged === false &&  <button type="submit"onClick={handleButtonClick} >Submit</button>}
         {isLogged && 
             <div>
                 <button className="btn btn-secondary" type="button" onClick={clickFalse}>Logout</button>

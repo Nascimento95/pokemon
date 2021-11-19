@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContextProvider } from './context/User'
 import Home from "./Page/Home";
 import Login from "./Page/Login";
@@ -15,11 +15,11 @@ const App = () => {
         <div className="row">
           <BrowserRouter>
             <Nav />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route  path="/login" component={Login} />
-              <Route  path="*" component={NotFound} />
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={<Home/>} />
+              <Route  path="/login" element={<Login/>} />
+              <Route  path="*" element={<NotFound/>} />
+            </Routes>
           </BrowserRouter>
         </div>
       </div>
